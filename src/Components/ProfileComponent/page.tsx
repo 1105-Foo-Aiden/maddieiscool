@@ -1,11 +1,10 @@
+'use client'
 import React from 'react'
 
-const page = () => {
+export default function ProfileComponent() {
     return (
         <div>
 
         </div>
     )
 }
-
-export default page
