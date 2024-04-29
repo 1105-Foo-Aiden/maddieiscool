@@ -9,7 +9,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-2">
         <div className="min-h-screen flex justify-center mt-10 cols-3">
           <div className="flex flex-col items-center hammersmith">
-            <div className="h-56 w-h-56 rounded-full bg-blue-500 border-solid border-2 border-black"></div>
+            <div className="h-96 w-96 rounded-full bg-blue-500 border-solid border-2 border-black"></div>
             <div className="text-center mt-10 text-4xl font-bold">Username</div>
             <div className="text-center text-4xl font-bold mt-5">Joined now</div>
           </div>
