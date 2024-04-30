@@ -23,7 +23,7 @@ export default function Home() {
   //   };
 
   //   if (!isCreate) {
-  //     let token: IToken = await *loginFunction*(userData);
+  //     let token: IToken = await * loginFunction * (userData);
   //     if (token.token != null) {
   //       localStorage.setItem("Token", token.token);
   //       sessionStorage.setItem("userId", String(userId?.id))
@@ -32,7 +32,7 @@ export default function Home() {
   //       alert("Login Failed");
   //     }
   //   } else {
-  //     *createAccountFunction*(userData);
+  //     * createAccountFunction * (userData);
   //     alert("Account Created");
   //   }
   // }
@@ -49,16 +49,16 @@ export default function Home() {
               {
                 isCreate ?
                   <div className="grid place-items-center">
-                    <p className="holtwood">Create Account</p>
+                    <p className="holtwood text-5xl">CREATE ACCOUNT</p>
 
                     <p className="hammersmith">Username</p>
-                    <input value={username} onChange={(e)=>setUsername(e.target.value)} className="hammersmith" type="text" />
+                    <input value={username} onChange={(e) => setUsername(e.target.value)} className="hammersmith" type="text" />
                     <p className="hammersmith">Password</p>
-                    <input value={password} onChange={(e)=>setPassword(e.target.value)} className="hammersmith" type="text" />
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} className="hammersmith" type="text" />
                     <p className="hammersmith">Confirm Password</p>
-                    <input value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} className="hammersmith" type="text" />
+                    <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="hammersmith" type="text" />
 
-                    <button className="hammersmith">Create</button>
+                    <button onClick={() => passUserData()} className="hammersmith">Create</button>
                     <p className="hammersmith">Already have an account? <span><button onClick={() => setIsCreate(false)}> Login </button> </span> </p>
                   </div>
                   :
@@ -66,12 +66,12 @@ export default function Home() {
                     <p className="holtwood">Login</p>
 
                     <p className="hammersmith">Username</p>
-                    <input className="hammersmith" type="text" />
+                    <input value={username} className="hammersmith" type="text" />
                     <p className="hammersmith">Password</p>
-                    <input className="hammersmith" type="text" />
+                    <input value={password} className="hammersmith" type="text" />
 
-                    <button className="hammersmith">Login</button>
-                    <p className="hammersmith">Don’t have an account? <span><button onClick={() => setIsCreate(true)}> Create one now! </button> </span> </p>
+                    <button onClick={() => passUserData()} className="hammersmith">Login</button>
+                    <p className="hammersmith">Don't have an account? <span><button onClick={() => setIsCreate(true)}> Create one now! </button> </span> </p>
                   </div>
               }
             </div>

@@ -2,17 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+@font-face {
+  font-family: Holtwood;
+  src: url(../fonts/HoltwoodOneSC-Regular.ttf);
+}
+
+@font-face {
+  font-family: Hammersmith;
+  src: url(../fonts/HammersmithOne-Regular.ttf);
+}
 
 .holtwood{
-  font-family: "Holtwood One SC", serif;
+  font-family: "Holtwood", serif;
   font-weight: 800;
   font-style: normal;
 }
 
 .hammersmith{
-  font-family: "Hammersmith One", sans-serif;
+  font-family: "Hammersmith", sans-serif;
   font-weight: 400;
   font-style: normal
 }
