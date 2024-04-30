@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import NavbarComponent from "../../Components/NavbarComponent/page";
+import NavbarComponent from "@/Components/NavbarComponent/page";
 import Paintbrush from '@/Assets/Paintbrush.png'
 import Pencil from '@/Assets/pencil.png'
 
@@ -24,7 +24,11 @@ export default function Dashboard() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="flex justify-center border-solid border-black border-2 rounded-md h-2/3 w-[75%] mt-10"></div>
+          <div className="flex justify-center border-solid border-black border-2 rounded-md h-2/3 w-[75%] mt-10">
+            <div className="flex text-5xl items-top">
+              <p>My Boards</p><button type="button">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </>
