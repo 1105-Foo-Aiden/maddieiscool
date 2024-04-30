@@ -1,12 +1,16 @@
 "use client";
+
 import React, { useState } from "react";
 import NavbarComponent from "@/Components/NavbarComponent/page";
 import Paintbrush from "@/Assets/Paintbrush.png";
 import Pencil from "@/Assets/pencil.png";
 import { Button, Modal, Popover } from "flowbite-react";
+import { useRouter } from "next/navigation";
+
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
+  const router = useRouter();
 
   const content = (
     <div className="w-48 text-sm text-white text-center">
@@ -46,12 +50,14 @@ export default function Dashboard() {
             <div className="text-center text-4xl mt-5">Joined 12/19/1937</div>
           </div>
         </div>
-        <div className="flex justify-center">
+        <div>
           <div className="flex justify-center border-solid border-black border-2 rounded-md h-2/3 w-[75%] mt-10">
             <div className="flex text-5xl items-top justify-center hammersmith">
               <p>My Boards</p>
               <div>
-              <Button onClick={() => setOpenModal(true)} className="text-black text-5xl">+</Button>
+                <button onClick={() => setOpenModal(true)} className="text-black text-5xl">+</button>
+                <div className="container">
+
                 <Modal show={OpenModal} onClose={() => setOpenModal(false)}>
                   <Modal.Header className="text-white">  
                   </Modal.Header>
@@ -64,11 +70,15 @@ export default function Dashboard() {
                         <input type="text" placeholder="Enter Code Here" className="rounded-lg text-center text-blue-500"/>
                         <br />
                         <br />
-                      <Button type="button" className="bg-emerald-700 text-white w-20 flex justify-center">Create</Button>
+                      <Button type="button" className="bg-emerald-600 text-white w-20 flex justify-center">Create</Button>
                       </div>
                     </div>
                   </Modal.Body>
                 </Modal>
+                </div>
+              </div>
+              <div>
+                <button onClick={() => router.push("/BoardPage")}>Board Page</button>
               </div>
             </div>
           </div>
