@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IToken } from "@/Interfaces/Interfaces";
@@ -107,7 +107,7 @@ export default function Home() {
                     </div>
 
                     <button onClick={() => passUserData()} className="mt-10 mb-4 hammersmith place-self-center text-[28px] text-white bg-[#0B7D61] rounded-xl pt-3 pb-2 px-10">CREATE</button>
-                    <p className="hammersmith text-center text-xl">Already have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[84%]" onClick={() => { setIsCreate(false); setShowConfirmPassword(false); setShowPassword(false) }}> Login </button> </span> </p>
+                    <p className="hammersmith text-center text-xl">Already have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[84%]" onClick={() => { setIsCreate(false); setShowConfirmPassword(false); setShowPassword(false); setUsername(""), setPassword(""); setConfirmPassword("")}}> Login </button> </span> </p>
                   </div>
                   :
                   <div className="grid pb-10">
@@ -127,7 +127,7 @@ export default function Home() {
                     </div>
 
                     <button onClick={() => passUserData()} className="mt-10 mb-5 hammersmith place-self-center text-[28px] text-white bg-[#0B7D61] rounded-xl pt-3 pb-2 px-10">LOGIN</button>
-                    <p className="hammersmith text-center text-xl">{letStringLiteral} <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[95%]" onClick={() => { setIsCreate(true); setShowLoginPassword(false) }}> Create one now! </button> </span> </p>
+                    <p className="hammersmith text-center text-xl">{letStringLiteral} <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[95%]" onClick={() => { setIsCreate(true); setShowLoginPassword(false); setUsername(""), setPassword(""); setConfirmPassword("") }}> Create one now! </button> </span> </p>
                   </div>
               }
             </div>

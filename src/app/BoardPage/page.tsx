@@ -1,12 +1,57 @@
 "use client";
 import NavbarComponent from "@/Components/NavbarComponent/page";
-import React from "react";
+import React, { useState } from "react";
 
 export default function BoardPage() {
+  const title = useState<string>("OUR BOARD")
+
   return (
     <>
       <NavbarComponent />
-      <div className="text-3xl hammersmith container ml-10 mt-20">Board Title</div>
+
+      <div className="bg-[#F1FFFC] min-h-screen h-full">
+        <div className="flex justify-center">
+          <div className="w-[90%]">
+            <div className="text-3xl hammersmith container pt-12">{title}</div>
+
+            <div className="flex justify-center pt-16">
+              <div className="w-[94%]">
+
+                <div className="bg-[#AEE6D9] w-[1219px] h-[252px] rounded-lg ">
+                  {/* <Draggable onStop={checkIfInBoundary}>
+                    <div className="w-[269px] h-[168px] bg-white rounded-lg">
+
+                    </div>
+                  </Draggable> */}
+
+
+                </div>
+
+                <div className="bg-[#6FDFC4] w-[1219px] h-[252px] rounded-lg my-16">
+                  {/* <Draggable onStop={checkIfInBoundary}>
+                    <div className="w-[269px] h-[168px] bg-white rounded-lg">
+
+                    </div>
+                  </Draggable> */}
+
+
+                </div>
+
+                <div className="bg-[#3EBE9F] w-[1219px] h-[252px] rounded-lg">
+                  {/* <Draggable onStop={checkIfInBoundary}>
+                    <div className="w-[269px] h-[168px] bg-white rounded-lg">
+
+                    </div>
+                  </Draggable> */}
+
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

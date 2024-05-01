@@ -1,9 +1,9 @@
 import { IToken, IUserData } from "@/Interfaces/Interfaces";
 
-const url = "https://{host}.azurewebsites.net/";
+const url = "https://khuthjgrouptaskmanager.azurewebsites.net/";
 
 export const createNewAccount = async (create: IUserData) => {
-    const res = await fetch(url + '{endpoint}', {
+    const res = await fetch(url + 'User/CreateUser', {
         method: "POST",
         headers: {
             'Content-Type': "application/json"
@@ -20,7 +20,7 @@ export const createNewAccount = async (create: IUserData) => {
 }
 
 export const loginToAccount = async (login: IUserData) => {
-    const res = await fetch(url + "{endpoint}", {
+    const res = await fetch(url + "User/Login", {
         method: "POST",
         headers: {
             'Content-Type': "application/json"

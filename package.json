@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@stitches/react": "^1.2.8",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.9.0",
     "next": "14.2.3",
+    "radash": "^12.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-draggable": "^4.4.6"
   },
   "devDependencies": {
     "@types/node": "^20",
