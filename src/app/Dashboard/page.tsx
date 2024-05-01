@@ -59,10 +59,8 @@ export default function Dashboard() {
                 <div className="container">
 
                 <Modal show={OpenModal} onClose={() => setOpenModal(false)}>
-                  <Modal.Header className="text-white">  
-                  </Modal.Header>
                   <Modal.Body>
-                    <div className="space-y-6">
+                    <div className="space-y-6 bg-gray-500">
                       <div className="grid-rows-3 items-center text-center hammersmith">
                         <div className="text-white text-base">
                           Enter Code
@@ -70,7 +68,7 @@ export default function Dashboard() {
                         <input type="text" placeholder="Enter Code Here" className="rounded-lg text-center text-blue-500"/>
                         <br />
                         <br />
-                      <Button type="button" className="bg-emerald-600 text-white w-20 flex justify-center">Create</Button>
+                      <Button type="button" className="bg-emerald-600 text-white w-20 flex justify-center" onClick={() => setOpenModal(false)}>Create</Button>
                       </div>
                     </div>
                   </Modal.Body>

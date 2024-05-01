@@ -2,7 +2,7 @@
 import NavbarComponent from "@/Components/NavbarComponent/page";
 import React from "react";
 
-export default function () {
+export default function BoardPage() {
   return (
     <>
       <NavbarComponent />
