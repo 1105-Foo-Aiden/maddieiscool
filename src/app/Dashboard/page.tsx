@@ -51,8 +51,8 @@ export default function Dashboard() {
           </div>
         </div>
         <div>
-          <div className="flex justify-center border-solid border-black border-2 rounded-md h-2/3 w-[75%] mt-10">
-            <div className="flex text-5xl items-top justify-center hammersmith">
+          <div className="border-solid border-black border-2 rounded-md h-2/3 w-[75%] mt-10">
+            <div className=" text-5xl items-top hammersmith">
               <p>My Boards</p>
               <div>
                 <button onClick={() => setOpenModal(true)} className="text-black text-5xl">+</button>
