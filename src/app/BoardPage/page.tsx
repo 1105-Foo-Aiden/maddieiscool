@@ -3,7 +3,7 @@ import NavbarComponent from "@/Components/NavbarComponent/page";
 import React, { useState } from "react";
 
 export default function BoardPage() {
-  const title = useState<string>("OUR BOARD")
+  const [title, setTitle] = useState<string>("OUR BOARD")
 
   return (
     <>
