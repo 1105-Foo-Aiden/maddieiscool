@@ -17,9 +17,14 @@ export default function Home() {
   const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
   const [showLoginPassword, setShowLoginPassword] = useState<boolean>(false);
 
+  const letStringLiteral: string = "Don't have an account?"
+
   const router = useRouter();
   const Handle = () => {
     router.push("/Dashboard")
+  };
+  const HandleBoard = () => {
+    router.push("/BoardPage")
   };
 
   const passUserData = async () => {
@@ -67,6 +72,7 @@ export default function Home() {
       </div>
 
       <button onClick={Handle} className="bg-black text-white">Go to Dashboard</button>
+      <button onClick={HandleBoard} className="bg-black text-white ml-10">Go to BoardPage</button>
 
       <div className="grid place-items-center mt-32">
         <div className="w-[50%] mb-20 bg-[#3EBE9F]">
@@ -101,7 +107,7 @@ export default function Home() {
                     </div>
 
                     <button onClick={() => passUserData()} className="mt-10 mb-4 hammersmith place-self-center text-[28px] text-white bg-[#0B7D61] rounded-xl pt-3 pb-2 px-10">CREATE</button>
-                    <p className="hammersmith text-center text-xl">Already have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[84%]" onClick={() => {setIsCreate(false); setShowConfirmPassword(false); setShowPassword(false)}}> Login </button> </span> </p>
+                    <p className="hammersmith text-center text-xl">Already have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[84%]" onClick={() => { setIsCreate(false); setShowConfirmPassword(false); setShowPassword(false) }}> Login </button> </span> </p>
                   </div>
                   :
                   <div className="grid pb-10">
@@ -121,7 +127,7 @@ export default function Home() {
                     </div>
 
                     <button onClick={() => passUserData()} className="mt-10 mb-5 hammersmith place-self-center text-[28px] text-white bg-[#0B7D61] rounded-xl pt-3 pb-2 px-10">LOGIN</button>
-                    <p className="hammersmith text-center text-xl">Don't have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[95%]" onClick={() => {setIsCreate(true); setShowLoginPassword(false)}}> Create one now! </button> </span> </p>
+                    <p className="hammersmith text-center text-xl">{letStringLiteral} <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[95%]" onClick={() => { setIsCreate(true); setShowLoginPassword(false) }}> Create one now! </button> </span> </p>
                   </div>
               }
             </div>
