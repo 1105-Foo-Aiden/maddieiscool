@@ -84,20 +84,24 @@ export default function Home() {
                     {
                       showPassword ? <input value={password} onChange={(e) => setPassword(e.target.value)} className="rounded-xl hammersmith h-14 border-none w-full" type="text" /> : <input value={password} onChange={(e) => setPassword(e.target.value)} className="rounded-xl hammersmith h-14 border-none w-full" type="password" />
                     }
-                    <div className="relative -mt-12 mr-3 mb-2">
-                      <img onClick={() => setShowPassword(!showPassword)} src={EyeSlash.src} alt="Enable/Disable Password Viewing" />
+                    <div className="flex justify-end">
+                      <div className="relative -mt-12 mr-3 mb-2">
+                        <img onClick={() => setShowPassword(!showPassword)} src={EyeSlash.src} alt="Enable/Disable Password Viewing" />
+                      </div>
                     </div>
 
                     <p className="hammersmith text-2xl mt-10 ml-2">Confirm Password</p>
                     {
                       showConfirmPassword ? <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="rounded-xl hammersmith h-14 border-none w-full" type="text" /> : <input value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="rounded-xl hammersmith h-14 border-none w-full" type="password" />
                     }
-                    <div className="relative -mt-12 mr-3 mb-2">
-                      <img onClick={() => setShowConfirmPassword(!showConfirmPassword)} src={EyeSlash.src} alt="Enable/Disable Password Viewing" />
+                    <div className="flex justify-end">
+                      <div className="relative -mt-12 mr-3 mb-2">
+                        <img onClick={() => setShowConfirmPassword(!showConfirmPassword)} src={EyeSlash.src} alt="Enable/Disable Password Viewing" />
+                      </div>
                     </div>
 
                     <button onClick={() => passUserData()} className="mt-10 mb-4 hammersmith place-self-center text-[28px] text-white bg-[#0B7D61] rounded-xl pt-3 pb-2 px-10">CREATE</button>
-                    <p className="hammersmith text-center text-xl">Already have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[84%]" onClick={() => setIsCreate(false)}> Login </button> </span> </p>
+                    <p className="hammersmith text-center text-xl">Already have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[84%]" onClick={() => {setIsCreate(false); setShowConfirmPassword(false); setShowPassword(false)}}> Login </button> </span> </p>
                   </div>
                   :
                   <div className="grid pb-10">
@@ -110,12 +114,14 @@ export default function Home() {
                     {
                       showLoginPassword ? <input value={password} onChange={(e) => setPassword(e.target.value)} className="rounded-xl hammersmith h-14 border-none w-full" type="text" /> : <input value={password} onChange={(e) => setPassword(e.target.value)} className="rounded-xl hammersmith h-14 border-none w-full" type="password" />
                     }
-                    <div className="relative -mt-12 mr-3 mb-2">
-                      <img onClick={() => setShowLoginPassword(!showLoginPassword)} src={EyeSlash.src} alt="Enable/Disable Password Viewing" />
+                    <div className="flex justify-end">
+                      <div className="relative -mt-12 mr-3 mb-2">
+                        <img onClick={() => setShowLoginPassword(!showLoginPassword)} src={EyeSlash.src} alt="Enable/Disable Password Viewing" />
+                      </div>
                     </div>
 
                     <button onClick={() => passUserData()} className="mt-10 mb-5 hammersmith place-self-center text-[28px] text-white bg-[#0B7D61] rounded-xl pt-3 pb-2 px-10">LOGIN</button>
-                    <p className="hammersmith text-center text-xl">Don't have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[95%]" onClick={() => setIsCreate(true)}> Create one now! </button> </span> </p>
+                    <p className="hammersmith text-center text-xl">Don't have an account? <span><button className="hammersmith text-xl border-b-2 border-solid border-black h-[95%]" onClick={() => {setIsCreate(true); setShowLoginPassword(false)}}> Create one now! </button> </span> </p>
                   </div>
               }
             </div>
