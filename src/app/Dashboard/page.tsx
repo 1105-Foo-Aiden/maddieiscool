@@ -7,19 +7,32 @@ import Pencil from "@/Assets/pencil.png";
 import { Button, Modal, Popover } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-
+import { CldUploadWidget } from "next-cloudinary";
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
-  const [color, setColor] = useState("")
+  const [color, setColor] = useState("");
+  const [imgbool, setimgBool] = useState<boolean>(false);
   const router = useRouter();
   let date = new Date().toLocaleDateString();
-  const GenerateColor = () =>{
-    setColor(Math.random().toString(16).substring(-6))
-  }
-  useEffect(() =>{
-    GenerateColor()
-  }, [])
+  const [img, setImg] = useState();
+
+  useEffect(()=>{
+    console.log(imgbool)
+  }, [img])
+
+
+  const GenerateColor = () => {
+    setImg(undefined)
+    const randomBetween = (min: number, max: number) => min + Math.floor(Math.random() * (max - min + 1));
+    var r = randomBetween(0, 255);
+    var g = randomBetween(0, 255);
+    var b = randomBetween(0, 255);
+    const rgb = `rgb(${r}, ${g}, ${b})`;
+    setColor(rgb)
+  };
+
+
   const content = (
     <div className="w-48 text-sm text-white text-center">
       <div className="border-b border-gray-900 bg-black px-3 py-2">
@@ -42,23 +55,38 @@ export default function Dashboard() {
       <div className="grid grid-cols-2">
         <div className="min-h-screen flex justify-center mt-10 cols-3">
           <div className="flex flex-col items-center hammersmith">
-            <div className="bg-blue-700" style={{
+            <div
+              style={{
+                backgroundImage: imgbool? `url(${img})` : '',
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                backgroundColor:  color,
                 position: "relative",
                 border: "solid",
                 borderWidth: 2,
                 borderRadius: "9999px",
                 borderColor: "black",
-                height: "24rem", 
-                width: "24rem"
-              }}>
+                height: "24rem",
+                width: "24rem",
+              }}
+            >
               <div className="absolute bottom-0 left-0">
                 <Popover content={content} placement="bottom">
-                  <Image src={Paintbrush.src} alt="change image"  width={40} height={40} onClick={() => GenerateColor()}/>
+                  <Image src={Paintbrush.src} alt="change image" className="cursor-pointer" width={40} height={40} onClick={() => {GenerateColor(), setimgBool(false)}} />
                 </Popover>
               </div>
               <div className="absolute bottom-0 right-0">
                 <Popover content={content2} placement="bottom">
-                  <Image src={Pencil.src} alt="random color" width={40} height={40}/>
+                  <CldUploadWidget uploadPreset="vo89jeia">
+                    {({ open, results }) => {
+                      setImg(results?.info.url);
+                      setimgBool(true)
+                      return (
+                        <Image src={Pencil.src} alt="random color" className="cursor-pointer" width={40} height={40} onClick={() => {open(), setimgBool(true)}} />
+                      );
+                    }}
+                  </CldUploadWidget>
                 </Popover>
               </div>
             </div>
@@ -71,53 +99,82 @@ export default function Dashboard() {
             <div className=" text-5xl items-top hammersmith">
               <div className="flex justify-center">
                 <p>My Boards</p>
-                <button onClick={() => setOpenModal(true)} className="text-black text-5xl">+</button>
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="text-black text-5xl"
+                >
+                  +
+                </button>
                 <Modal show={OpenModal} onClose={() => setOpenModal(false)}>
-                  <Modal.Header/>
+                  <Modal.Header />
                   <Modal.Body>
                     <div className="bg-white grid grid-cols-2">
                       <div className="text-center hammersmith border-r-2 border-dotted">
-                        <div className="text-3xl">
-                          Enter Code
-                        </div>
+                        <div className="text-3xl">Enter Code</div>
                         <br />
-                          <input type="text" placeholder="Enter Code Here" className="rounded-lg text-center text-blue-500"/>
+                        <input
+                          type="text"
+                          placeholder="Enter Code Here"
+                          className="rounded-lg text-center text-blue-500"
+                        />
                         <br />
                         <br />
                         <div className="flex justify-center">
-                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => setOpenModal(false)}>Join</Button>
+                          <Button
+                            type="button"
+                            className="bg-emerald-600 text-white w-20"
+                            onClick={() => setOpenModal(false)}
+                          >
+                            Join
+                          </Button>
                         </div>
                       </div>
                       <div className="text-center hammersmith">
-                        <div className="text-3xl">
-                          Create New
-                        </div>
+                        <div className="text-3xl">Create New</div>
                         <br />
-                          <input type="text" placeholder="Name Board" className="rounded-lg text-center text-blue-500"/>
+                        <input
+                          type="text"
+                          placeholder="Name Board"
+                          className="rounded-lg text-center text-blue-500"
+                        />
                         <br />
                         <br />
                         <div className="flex justify-center">
-                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => setOpenModal(false)}>Create</Button>
+                          <Button
+                            type="button"
+                            className="bg-emerald-600 text-white w-20"
+                            onClick={() => setOpenModal(false)}
+                          >
+                            Create
+                          </Button>
                         </div>
                       </div>
                     </div>
                   </Modal.Body>
                 </Modal>
-                </div>
               </div>
-              <div className="pt-9">
-                <div className="hammersmith text-2xl min-h-24 w-[90%] ml-5 flex align-middle justify-between bg-[#AEE6D9]" onClick={() => router.push("/BoardPage")}>
-                  <div className="mt-6 ml-3">
-                    Your Board
-                  </div>
-                  <div className="bg-blue-700 rounded-full w-12 h-12 border-2 border-solid border-black mr-5 mt-4">
-                  </div>
-                </div>
+            </div>
+            <div className="pt-9">
+              <div
+                className="hammersmith text-2xl min-h-24 w-[90%] ml-5 flex align-middle justify-between bg-[#AEE6D9]"
+                onClick={() => router.push("/BoardPage")}
+              >
+                <div className="mt-7 ml-3">Your Board</div>
+                <div
+                  className="rounded-full w-12 h-12 border-2 border-solid border-black mr-5 mt-5"
+                  style={{
+                    backgroundColor: color,
+                    backgroundImage: `url(${img})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundSize: "cover",
+                  }}
+                ></div>
               </div>
             </div>
           </div>
         </div>
-
+      </div>
     </>
   );
 }
