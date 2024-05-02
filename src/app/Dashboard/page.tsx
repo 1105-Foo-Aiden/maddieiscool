@@ -7,7 +7,7 @@ import Pencil from "@/Assets/pencil.png";
 import { Button, Modal, Popover } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { CldUploadWidget } from "next-cloudinary";
+import { CldUploadWidget, CloudinaryUploadWidgetInfo, CloudinaryUploadWidgetResults } from "next-cloudinary";
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
@@ -15,10 +15,10 @@ export default function Dashboard() {
   const [imgbool, setimgBool] = useState<boolean>(false);
   const router = useRouter();
   let date = new Date().toLocaleDateString();
-  const [img, setImg] = useState();
+  const [img, setImg] = useState<any>();
 
   useEffect(()=>{
-    console.log(imgbool)
+    console.log(img)
   }, [img])
 
 
@@ -80,7 +80,15 @@ export default function Dashboard() {
                 <Popover content={content2} placement="bottom">
                   <CldUploadWidget uploadPreset="vo89jeia">
                     {({ open, results }) => {
-                      setImg(results?.info.url);
+                      if(results){
+                        if(typeof results.info === "string"){
+                          setImg(results.info)
+                        }
+                        else{
+                          const info: any = results.info
+                          setImg(info.url)
+                        }
+                      }
                       setimgBool(true)
                       return (
                         <Image src={Pencil.src} alt="random color" className="cursor-pointer" width={40} height={40} onClick={() => {open(), setimgBool(true)}} />
