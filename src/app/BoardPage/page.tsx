@@ -15,41 +15,35 @@ export default function BoardPage() {
           <div className="w-[90%]">
             <div className="text-3xl hammersmith container pt-12">{title}</div>
 
-            <div className="flex justify-center pt-16">
-              <div className="w-[94%]">
+            <div className="flex justify-center pt-14">
+              <div className="mx-10 w-full">
 
-                <div className="bg-[#AEE6D9] w-[1219px] h-[252px] rounded-lg my-6">
+                <div className="bg-[#AEE6D9] h-[252px] rounded-lg my-6">
                   <div>
                     <p>To-Do</p>
                   </div>
-                  <div className="pl-12 py-6">
+                  <div className="pl-8 py-6">
                     {SortableComponent()}
                   </div>
-
-
-
                 </div>
 
-                <div className="bg-[#6FDFC4] w-[1219px] h-[252px] rounded-lg my-6">
-                  {/* <Draggable onStop={checkIfInBoundary}>
-                    <div className="w-[269px] h-[168px] bg-white rounded-lg">
-
-                    </div>
-                  </Draggable> */}
-
-
+                <div className="bg-[#6FDFC4] h-[252px] rounded-lg my-6">
+                  <div>
+                    <p>In Progress</p>
+                  </div>
+                  <div className="pl-8 py-6">
+                    {SortableComponent()}
+                  </div>
                 </div>
 
-                <div className="bg-[#3EBE9F] w-[1219px] h-[252px] rounded-lg my-6">
-                  {/* <Draggable onStop={checkIfInBoundary}>
-                    <div className="w-[269px] h-[168px] bg-white rounded-lg">
-
-                    </div>
-                  </Draggable> */}
-
-
+                <div className="bg-[#3EBE9F] h-[252px] rounded-lg my-6">
+                  <div>
+                    <p>Completed</p>
+                  </div>
+                  <div className="pl-8 py-6">
+                    {SortableComponent()}
+                  </div>
                 </div>
-
               </div>
             </div>
           </div>

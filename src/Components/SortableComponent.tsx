@@ -11,7 +11,7 @@ export const SortableComponent = () => {
     return (
         <ReactSortable list={dummyData} setList={setDumyData}>
             {dummyData.map((item) => (
-                <div className="inline-flex w-[23%]" key={item.id}>
+                <div className="inline-flex w-[23%] ml-8" key={item.id}>
                     <div className="bg-white rounded-2xl px-6 h-[168px]">
                         <p className="hammersmith text-2xl">{item.title}</p>
                         <p className="hammersmith text-base">{item.desc}</p>
