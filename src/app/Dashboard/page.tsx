@@ -7,20 +7,37 @@ import Pencil from "@/Assets/pencil.png";
 import { Button, Modal, Popover } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { CldUploadWidget, CloudinaryUploadWidgetInfo, CloudinaryUploadWidgetResults } from "next-cloudinary";
+import { CldUploadWidget } from "next-cloudinary";
+import { IBoardCreation } from "@/Interfaces/Interfaces";
+import { GetUserByUsername } from "@/utils/DataServices";
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
   const [color, setColor] = useState("");
   const [imgbool, setimgBool] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>()
   const router = useRouter();
+  const [BoardName, setBoardName] = useState<string>()
   let date = new Date().toLocaleDateString();
   const [img, setImg] = useState<any>();
 
   useEffect(()=>{
+    GenerateColor()
     console.log(img)
   }, [img])
 
+
+const CreateBoard = async () =>{
+    if(BoardName == undefined){
+      alert("Please enter a name for your board")
+    }
+    else{
+      let BoardData = {
+        BoardName: BoardName,
+        username: username
+      };
+    }
+  }
 
   const GenerateColor = () => {
     setImg(undefined)
@@ -120,19 +137,11 @@ export default function Dashboard() {
                       <div className="text-center hammersmith border-r-2 border-dotted">
                         <div className="text-3xl">Enter Code</div>
                         <br />
-                        <input
-                          type="text"
-                          placeholder="Enter Code Here"
-                          className="rounded-lg text-center text-blue-500"
-                        />
+                        <input  type="text" placeholder="Enter Code Here" className="rounded-lg text-center text-blue-500" />
                         <br />
                         <br />
                         <div className="flex justify-center">
-                          <Button
-                            type="button"
-                            className="bg-emerald-600 text-white w-20"
-                            onClick={() => setOpenModal(false)}
-                          >
+                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => setOpenModal(false)} >
                             Join
                           </Button>
                         </div>
@@ -140,19 +149,11 @@ export default function Dashboard() {
                       <div className="text-center hammersmith">
                         <div className="text-3xl">Create New</div>
                         <br />
-                        <input
-                          type="text"
-                          placeholder="Name Board"
-                          className="rounded-lg text-center text-blue-500"
-                        />
+                        <input onChange={(e) => setBoardName(e.target.value)} type="text" placeholder="Name Board" className="rounded-lg text-center text-blue-500" />
                         <br />
                         <br />
                         <div className="flex justify-center">
-                          <Button
-                            type="button"
-                            className="bg-emerald-600 text-white w-20"
-                            onClick={() => setOpenModal(false)}
-                          >
+                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => CreateBoard()} >
                             Create
                           </Button>
                         </div>

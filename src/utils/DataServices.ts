@@ -1,4 +1,4 @@
-import { IToken, IUserData } from "@/Interfaces/Interfaces";
+import { IBoardCreation, IToken, IUser, IUserData } from "@/Interfaces/Interfaces";
 
 const url = "https://khuthjgrouptaskmanager.azurewebsites.net/";
 
@@ -45,5 +45,38 @@ export const GetBoardByBoardID = async (id: number) => {
     }
 
     const data = await res.json();
+    return data;
+}
+
+export const GetUserByUsername = async (username: string) => {
+    const res = await fetch(url + "User/GetUserByUsername/" + username, {
+        method: "GET",
+        headers: {
+            'Content-Type': "application/json"
+        }
+    });
+    if (!res.ok) {
+        const message = "An error has occurred: " + res.status;
+        throw new Error(message);
+    }
+
+    const data: IUser = await res.json();
+    return data
+}
+
+export const CreateBoard = async (boardToCreate: IBoardCreation) => {
+    const res = await fetch(url + "Board/CreateBoard", {
+        method: "POST",
+        headers:{
+            'Content-Type': "application/json",
+        },
+        body: JSON.stringify(boardToCreate)
+
+    })
+    if(!res.ok){
+        const message = "An error has occurred: " + res.status;
+        throw new Error(message);
+    }
+    const data: boolean = await res.json();
     return data;
 }
