@@ -35,3 +35,15 @@ export const loginToAccount = async (login: IUserData) => {
     const data: IToken = await res.json();
     return data;
 }
+
+export const GetBoardByBoardID = async (id: number) => {
+    const res = await fetch(url + "Board/GetBoardByBoardID/" + id)
+    
+    if (!res.ok) {
+        const message = "An error has occurred: " + res.status;
+        throw new Error(message);
+    }
+
+    const data = await res.json();
+    return data;
+}

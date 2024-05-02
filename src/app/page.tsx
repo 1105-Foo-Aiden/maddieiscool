@@ -30,15 +30,15 @@ export default function Home() {
   const passUserData = async () => {
     let userData = {
       username: username,
+      profileImg: "",
       password: password
     };
-    console.log(userData);
+    // console.log(userData);
 
     if (!isCreate) {
       let token: IToken = await loginToAccount(userData);
       if (token.token != null) {
         sessionStorage.setItem("Token", token.token);
-        // sessionStorage.setItem("userId", String(userId?.id))
         router.push("/Dashboard")
       } else {
         alert("Login Failed");
@@ -47,10 +47,10 @@ export default function Home() {
       if (confirmPassword === password) {
         try {
           createNewAccount(userData);
+          alert("Account Created");
         } catch {
           alert("Account creation failed - Username may be taken. Try Again")
         }
-        alert("Account Created");
       } else {
         alert("Passwords do not match. Try Again")
       }
