@@ -2,7 +2,7 @@ import { ItemType } from "@/Interfaces/Interfaces";
 import React, { useState } from "react";
 import { ReactSortable } from "react-sortablejs";
 
-export const sortableComponent = () => {
+export const SortableComponent = () => {
     const [dummyData, setDumyData] = useState<ItemType[]>([
         { id: 1, title: "Test Login", desc: "A short description of the task you are viewing", priority: "2", userPFP: "string" },
         { id: 2, title: "Test Create Account", desc: "A short description of the task you are viewing", priority: "5", userPFP: "string" },

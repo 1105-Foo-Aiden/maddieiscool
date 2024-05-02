@@ -1,6 +1,6 @@
 "use client";
 import NavbarComponent from "@/Components/NavbarComponent/page";
-import { sortableComponent } from "@/Components/sortableComponent";
+import { SortableComponent } from "@/Components/SortableComponent";
 import React, { useState } from "react";
 
 export default function BoardPage() {
@@ -23,7 +23,7 @@ export default function BoardPage() {
                     <p>To-Do</p>
                   </div>
                   <div className="pl-12 py-6">
-                    {sortableComponent()}
+                    {SortableComponent()}
                   </div>
 
 
