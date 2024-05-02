@@ -9,7 +9,7 @@ interface ItemType {
     userPFP: string;
 }
 
-export const sortableComponent: FC = (props) => {
+export const sortableComponent = () => {
     const [state, setState] = useState<ItemType[]>([
         { id: 1, title: "Test Login", desc: "A short description of the task you are viewing", priority: "2", userPFP: "string" },
         { id: 2, title: "Test Create Account", desc: "A short description of the task you are viewing", priority: "5", userPFP: "string" },

@@ -5,7 +5,6 @@ import React, { useState } from "react";
 
 export default function BoardPage() {
   const [title, setTitle] = useState<string>("OUR BOARD")
-  const [fixError, setFixError] = useState<boolean>(true)
 
   return (
     <>
@@ -24,7 +23,7 @@ export default function BoardPage() {
                     <p>To-Do</p>
                   </div>
                   <div className="pl-12 py-6">
-                    {sortableComponent(fixError)}
+                    {sortableComponent()}
                   </div>
 
 
