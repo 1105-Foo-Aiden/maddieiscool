@@ -20,4 +20,4 @@ export const SortableComponent = () => {
             ))}
         </ReactSortable>
     );
-};
+}; 
