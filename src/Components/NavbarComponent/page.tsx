@@ -13,7 +13,7 @@ export default function NavbarComponent(props:any) {
     <div className="bg-gradient-to-r from-[#AEE6D9] to-[#3EBE9F] min-h-28 flex justify-between">
       <Image src={Logo.src} alt="Logo" className="ml-10 h-1/2" width={200} height={100} />
       <Dropdown label=" " renderTrigger={() => <span className="mt-5 mr-5 w-20 h-20 border-solid border-2 border-black rounded-full" style={{
-        backgroundColor: props.img.includes("rgb") ? props.img : " ",
+        backgroundColor: props.img ? props.img : " ",
         backgroundImage: props.img.src ? props.img.src : " ",
       }}></span>} className="flex justify-center w-fit border-solid border-2 rounded-md border-black">
         <Dropdown.Item className="text-2xl text-center"onClick={() => router.push("/Dashboard")}>
