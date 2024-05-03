@@ -9,13 +9,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 import { IBoardCreation } from "@/Interfaces/Interfaces";
-import { GetUserByUsername } from "@/utils/DataServices";
+import { GetUserByUsername, CreateBoard } from "@/utils/DataServices";
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
   const [color, setColor] = useState("");
   const [imgbool, setimgBool] = useState<boolean>(false);
-  const [username, setUsername] = useState<string>()
+  const [username, setUsername] = useState<string>("")
   const router = useRouter();
   const [BoardName, setBoardName] = useState<string>()
   let date = new Date().toLocaleDateString();
@@ -27,15 +27,16 @@ export default function Dashboard() {
   }, [img])
 
 
-const CreateBoard = async () =>{
+const CreateBoardFunc = async () =>{
     if(BoardName == undefined){
       alert("Please enter a name for your board")
     }
     else{
       let BoardData = {
-        BoardName: BoardName,
+        boardName: BoardName,
         username: username
       };
+      const result = CreateBoard(BoardData)
     }
   }
 
@@ -66,9 +67,10 @@ const CreateBoard = async () =>{
     </div>
   );
 
+
   return (
     <>
-      <NavbarComponent />
+      <NavbarComponent img={img? img : color}/>
       <div className="grid grid-cols-2">
         <div className="min-h-screen flex justify-center mt-10 cols-3">
           <div className="flex flex-col items-center hammersmith">
