@@ -64,7 +64,7 @@ export const GetUserByUsername = async (username: string) => {
     return data
 }
 
-export const CreateBoard = async (boardToCreate: IBoardCreation) => {
+export const CreateBoardFunc = async (boardToCreate: IBoardCreation) => {
     const res = await fetch(url + "Board/CreateBoard", {
         method: "POST",
         headers:{

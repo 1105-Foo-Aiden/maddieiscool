@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 import { IBoardCreation, IUser } from "@/Interfaces/Interfaces";
-import { GetUserByUsername, CreateBoard } from "@/utils/DataServices";
+import { GetUserByUsername, CreateBoardFunc } from "@/utils/DataServices";
 import { Session } from "inspector";
 
 export default function Dashboard() {
@@ -43,7 +43,7 @@ useEffect(() =>{
   }, [img])
 
 
-const CreateBoardFunc = async () =>{
+const CreateBoardFunction = async () =>{
     if(boardName == undefined){
       alert("Please enter a name for your board")
     }
@@ -52,7 +52,7 @@ const CreateBoardFunc = async () =>{
         boardName: boardName,
         username: username
       };
-      const result = await CreateBoard(BoardData)
+      const result = await CreateBoardFunc(BoardData)
       result ? alert("Board Created successfully") : alert("Failed to create Board, please try again")
     }
   }
@@ -172,7 +172,7 @@ const CreateBoardFunc = async () =>{
                         <br />
                         <br />
                         <div className="flex justify-center">
-                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => CreateBoardFunc()} >
+                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => CreateBoardFunction()} >
                             Create
                           </Button>
                         </div>
