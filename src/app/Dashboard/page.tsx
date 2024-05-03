@@ -4,13 +4,15 @@ import React, { useEffect, useState } from "react";
 import NavbarComponent from "@/Components/NavbarComponent/page";
 import Paintbrush from "@/Assets/Paintbrush.png";
 import Pencil from "@/Assets/pencil.png";
-import { Button, Modal, Popover } from "flowbite-react";
+import { Button, Dropdown, Modal, Popover } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
 import { IBoardCreation, IUser } from "@/Interfaces/Interfaces";
 import { GetUserByUsername, CreateBoardFunc } from "@/utils/DataServices";
 import { Session } from "inspector";
+import SignOut from "@/Assets/SignOut.png"
+import Logo from "@/Assets/Logo.png";
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
@@ -84,7 +86,26 @@ const CreateBoardFunction = async () =>{
 
   return (
     <>
-      <NavbarComponent img={img? img : color}/>
+    <div className="bg-gradient-to-r from-[#AEE6D9] to-[#3EBE9F] min-h-28 flex justify-between">
+      <Image src={Logo.src} alt="Logo" className="ml-10 h-1/2" width={200} height={100} />
+      <Dropdown label=" " renderTrigger={() => <span className="mt-5 mr-5 w-20 h-20 border-solid border-2 border-black rounded-full" style={{
+        backgroundImage: imgbool? `url(${img})` : '',
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundColor:  color
+      }}></span>} className="flex justify-center w-fit border-solid border-2 rounded-md border-black">
+        <Dropdown.Item className="text-2xl text-center"onClick={() => router.push("/Dashboard")}>
+          Profile
+        </Dropdown.Item>
+        <Dropdown.Item className="text-green-400 text-2xl flex text-center">
+          Create Board
+        </Dropdown.Item>
+        <Dropdown.Item className="text-rose-600 text-2xl flex text-center">
+          Log Out <img src={SignOut.src} alt="Sign out" onClick={() => router.push("/")} />
+        </Dropdown.Item>
+      </Dropdown>
+    </div>
       <div className="grid grid-cols-2">
         <div className="min-h-screen flex justify-center mt-10 cols-3">
           <div className="flex flex-col items-center hammersmith">
