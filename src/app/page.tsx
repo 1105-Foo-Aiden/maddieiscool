@@ -71,9 +71,6 @@ export default function Home() {
         <img src={Logo.src} alt="Logo" className="ml-10 h-1/2" />
       </div>
 
-      <button onClick={Handle} className="bg-black text-white">Go to Dashboard</button>
-      <button onClick={HandleBoard} className="bg-black text-white ml-10">Go to BoardPage</button>
-
       <div className="grid place-items-center mt-32">
         <div className="w-[50%] mb-20 bg-[#3EBE9F]">
           <div className="flex justify-center">
