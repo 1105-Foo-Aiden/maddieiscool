@@ -52,7 +52,8 @@ const CreateBoardFunc = async () =>{
         boardName: boardName,
         username: username
       };
-      const result = CreateBoard(BoardData)
+      const result = await CreateBoard(BoardData)
+      result ? alert("Board Created successfully") : alert("Failed to create Board, please try again")
     }
   }
 
