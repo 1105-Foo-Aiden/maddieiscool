@@ -26,6 +26,7 @@ export default function Dashboard() {
 useEffect(() =>{
   let Sessionusername = sessionStorage.getItem("Username")
   Sessionusername? setUsername(Sessionusername) : setUsername("")
+  GenerateColor()
   if(username){
       const GetUserData = async () =>{
         const result = await GetUserByUsername(username)
@@ -37,10 +38,6 @@ useEffect(() =>{
   }
   console.log(username)
 }, [])
-
-  useEffect(()=>{    
-    GenerateColor()
-  }, [img])
 
 
 const CreateBoardFunction = async () =>{
