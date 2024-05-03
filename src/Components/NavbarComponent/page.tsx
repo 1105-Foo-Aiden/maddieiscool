@@ -23,7 +23,7 @@ export default function NavbarComponent(props:any) {
           Create Board
         </Dropdown.Item>
         <Dropdown.Item className="text-rose-600 text-2xl flex text-center">
-          Log Out <img src={SignOut.src} alt="Sign out" />
+          Log Out <img src={SignOut.src} alt="Sign out" onClick={() => router.push("/")} />
         </Dropdown.Item>
       </Dropdown>
     </div>

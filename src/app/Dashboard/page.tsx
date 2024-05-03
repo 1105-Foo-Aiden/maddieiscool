@@ -8,32 +8,48 @@ import { Button, Modal, Popover } from "flowbite-react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { CldUploadWidget } from "next-cloudinary";
-import { IBoardCreation } from "@/Interfaces/Interfaces";
+import { IBoardCreation, IUser } from "@/Interfaces/Interfaces";
 import { GetUserByUsername, CreateBoard } from "@/utils/DataServices";
+import { Session } from "inspector";
 
 export default function Dashboard() {
   const [OpenModal, setOpenModal] = useState(false);
   const [color, setColor] = useState("");
   const [imgbool, setimgBool] = useState<boolean>(false);
   const [username, setUsername] = useState<string>("")
+  const [data, setData] = useState<IUser>()
   const router = useRouter();
-  const [BoardName, setBoardName] = useState<string>()
+  const [boardName, setBoardName] = useState<string>()
   let date = new Date().toLocaleDateString();
   const [img, setImg] = useState<any>();
 
-  useEffect(()=>{
+useEffect(() =>{
+  let Sessionusername = sessionStorage.getItem("Username")
+  Sessionusername? setUsername(Sessionusername) : setUsername("")
+  if(username){
+      const GetUserData = async () =>{
+        const result = await GetUserByUsername(username)
+        if(result){
+        setData(result)
+      }
+      GetUserData()
+    }
+  }
+  console.log(username)
+}, [])
+
+  useEffect(()=>{    
     GenerateColor()
-    console.log(img)
   }, [img])
 
 
 const CreateBoardFunc = async () =>{
-    if(BoardName == undefined){
+    if(boardName == undefined){
       alert("Please enter a name for your board")
     }
     else{
       let BoardData = {
-        boardName: BoardName,
+        boardName: boardName,
         username: username
       };
       const result = CreateBoard(BoardData)
@@ -117,7 +133,7 @@ const CreateBoardFunc = async () =>{
                 </Popover>
               </div>
             </div>
-            <div className="text-center mt-10 text-6xl font-bold">USERNAME</div>
+            <div className="text-center mt-10 text-6xl font-bold">{username}</div>
             <div className="text-center text-4xl mt-5">Joined {date}</div>
           </div>
         </div>
@@ -155,7 +171,7 @@ const CreateBoardFunc = async () =>{
                         <br />
                         <br />
                         <div className="flex justify-center">
-                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => CreateBoard()} >
+                          <Button type="button" className="bg-emerald-600 text-white w-20" onClick={() => CreateBoardFunc()} >
                             Create
                           </Button>
                         </div>
