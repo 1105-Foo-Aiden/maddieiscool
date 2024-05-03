@@ -39,6 +39,7 @@ export default function Home() {
       let token: IToken = await loginToAccount(userData);
       if (token.token != null) {
         sessionStorage.setItem("Token", token.token);
+        sessionStorage.setItem("Username", userData.username)
         router.push("/Dashboard")
       } else {
         alert("Login Failed");
