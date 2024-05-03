@@ -13,6 +13,13 @@ export interface ItemType {
   desc: string;
   priority: string;
   userPFP: string;
+  CatTitle: string;
+}
+
+export interface TopItemType {
+  id: number;
+  CatTitle: string;
+  color: string
 }
 
 export interface IBoardCreation {

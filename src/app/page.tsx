@@ -33,7 +33,6 @@ export default function Home() {
       profileImg: "",
       password: password
     };
-    // console.log(userData);
 
     if (!isCreate) {
       let token: IToken = await loginToAccount(userData);
